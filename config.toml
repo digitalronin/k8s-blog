@@ -1,0 +1,24 @@
+baseURL = "http://k8s.digitalronin.com/"
+languageCode = "en-us"
+title = "K8S DigitalRonin"
+theme = "ananke"
+publishDir = "docs"
+
+MetaDataFormat = "yaml"
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
+Paginate = 5
+googleAnalytics = "UA-36560094-6"
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  show_reading_time = true
+  twitter = "https://twitter.com/digitalronin"
+  github = "https://github.com/digitalronin"
+  featured_image = "/images/jeremy-thomas-75753-unsplash.jpg"
+  recent_posts_number = 3
