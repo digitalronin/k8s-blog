@@ -56,7 +56,10 @@ Let's break down what this is doing.
 FROM ruby:2.6.2-alpine
 {{</highlight>}}
 
-We're basing our image on the standard ruby image from docker hub, but we're specifying the `2.6.2-alpine` tag. Alpine images are a lot smaller than the 'full fat' versions, and it's good practice to keep our docker images as small as possible.
+We're basing our image on the standard ruby image from docker hub, but we're
+specifying the `2.6.2-alpine` tag. Alpine images are a lot smaller than the
+'full fat' versions, and it's good practice to keep our docker images as small
+as possible.
 
 {{<highlight docker>}}
 RUN apk --update add --virtual build_deps \
@@ -65,7 +68,10 @@ RUN apk --update add --virtual build_deps \
     nodejs
 {{</highlight>}}
 
-`apk` is the alpine package manager. Rails depends on some gems which in turn depend on compiled C code and certain system libraries. This section installs the libraries and build tools that will be required during the `bundle install` step.
+`apk` is the alpine package manager. Rails depends on some gems which in turn
+depend on compiled C code and certain system libraries. This section installs
+the libraries and build tools that will be required during the `bundle install`
+step.
 
 We also install `nodejs`. Without this, rails will complain that it has no
 javascript runtime. We don't have any javascript code in our application, so we
