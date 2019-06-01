@@ -126,12 +126,12 @@ Replace those three lines with this:
 
 {{<highlight yaml>}}
 development:
-  url: postgres://my_user:password123@localhost/counter_dev
+  url: <%= ENV['DATABASE_URL'] %>
 {{</highlight>}}
 
 Now go back to the terminal where you started rails and restart it by pressing `Control-C` and then executing:
 
-    rails server
+    DATABASE_URL="postgres://my_user:password123@localhost/counter_dev" rails server
 
 This time, when you visit `http://localhost:3000` you should see the rails welcome message.
 
