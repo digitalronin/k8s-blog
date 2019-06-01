@@ -28,7 +28,8 @@ FROM ruby:2.6.2-alpine
 # Install pre-requisites for building nokogiri & pg gems
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
-    openssl-dev postgresql-dev libxml2-dev libxslt-dev
+    openssl-dev postgresql-dev libxml2-dev libxslt-dev \
+    nodejs
 
 WORKDIR /app
 
@@ -60,10 +61,17 @@ We're basing our image on the standard ruby image from docker hub, but we're spe
 {{<highlight docker>}}
 RUN apk --update add --virtual build_deps \
     build-base ruby-dev libc-dev linux-headers \
-    openssl-dev postgresql-dev libxml2-dev libxslt-dev
+    openssl-dev postgresql-dev libxml2-dev libxslt-dev \
+    nodejs
 {{</highlight>}}
 
 `apk` is the alpine package manager. Rails depends on some gems which in turn depend on compiled C code and certain system libraries. This section installs the libraries and build tools that will be required during the `bundle install` step.
+
+We also install `nodejs`. Without this, rails will complain that it has no
+javascript runtime. We don't have any javascript code in our application, so we
+could confiure rails to not require this. But, since most real applications
+will have some javascript code, I think it's better to just install nodejs in
+our docker image.
 
 {{<highlight docker>}}
 WORKDIR /app
