@@ -126,6 +126,7 @@ Replace those three lines with this:
 
 {{<highlight yaml>}}
 development:
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
 {{</highlight>}}
 
