@@ -133,7 +133,7 @@ Now go back to the terminal where you started rails and restart it by pressing `
 
     rails server
 
-This time, when you visit `http://localhost:3000` you should see the rails welcom message.
+This time, when you visit `http://localhost:3000` you should see the rails welcome message.
 
 ![Rails Welcome Message](/images/youre-on-rails.png)
 
