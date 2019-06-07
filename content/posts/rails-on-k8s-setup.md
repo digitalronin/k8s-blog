@@ -1,7 +1,6 @@
 ---
 title: "Rails on Kubernetes - part 1: Setup"
 date: 2019-04-16T20:10:47+01:00
-draft: true
 ---
 
 # Rails on Kubernetes - part 1: Setup
