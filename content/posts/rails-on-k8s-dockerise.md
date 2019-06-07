@@ -1,7 +1,6 @@
 ---
 title: "Rails on Kubernetes - part 3: Dockerise"
 date: 2019-05-06T20:11:19+01:00
-draft: true
 ---
 
 # Rails on Kubernetes - part 3: Dockerise

@@ -1,7 +1,6 @@
 ---
 title: "Rails on Kubernetes - part 2a: The Counter App."
 date: 2019-04-30T20:11:07+01:00
-draft: true
 ---
 
 # Rails on Kubernetes - part 2a: The Counter App

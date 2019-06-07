@@ -1,7 +1,6 @@
 ---
 title: "Rails on Kubernetes - part 2: Create the app"
 date: 2019-04-23T20:11:07+01:00
-draft: true
 ---
 
 # Rails on Kubernetes - part 2: Create the app
