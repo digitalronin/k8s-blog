@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://k8s.digitalronin.com/posts/" />
 
-<meta property="og:updated_time" content="2019-04-16T20:10:47&#43;01:00"/>
+<meta property="og:updated_time" content="2019-05-06T20:11:19&#43;01:00"/>
 
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
@@ -136,6 +136,58 @@ if (!doNotTrack) {
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/rails-on-k8s-dockerise/" class="link black dim">
+        Rails on Kubernetes - part 3: Dockerise
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Rails on Kubernetes - part 3: Dockerise Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
+In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.
+Before we do that, there is a small tweak we need to make. Rails applications require the tzinfo-data gem on some platforms, but not others. The docker image we will create needs the gem, but bundler fails to recognise the environment correctly, when installing gems in the docker image.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/rails-on-k8s-create-app2/" class="link black dim">
+        Rails on Kubernetes - part 2a: The Counter App.
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Rails on Kubernetes - part 2a: The Counter App Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
+Fire up a termninal, and cd into the counter directory.
+First, let&rsquo;s create a scaffold for our value.
+rails generate scaffold value amount:integer rails db:migrate  This creates a lot more than we actually need, but I&rsquo;m more concerned about the kubernetes part than the rails part, in this tutorial, so I&rsquo;m not going to worry about that (or about best practice for our rails code).
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/rails-on-k8s-create-app/" class="link black dim">
+        Rails on Kubernetes - part 2: Create the app
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Rails on Kubernetes - part 2: Create the app This is the second part of a series of posts on how to deploy a ruby on rails application to a kubernetes cluster. If you want to start from the beginning, part one is here
+Now that we have our kubernetes cluster, we need to create something to deploy onto it.
+For this walkthrough, I&rsquo;m going to create a trivial rails application, which just stores a counter in a database, and allows you to increment it by clicking a button.
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
