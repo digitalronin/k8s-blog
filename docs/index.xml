@@ -6,9 +6,20 @@
     <description>Recent content on K8S DigitalRonin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 16 Apr 2019 20:10:47 +0100</lastBuildDate>
     
 	<atom:link href="http://k8s.digitalronin.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rails on Kubernetes - part 1: Setup</title>
+      <link>http://k8s.digitalronin.com/posts/rails-on-k8s-setup/</link>
+      <pubDate>Tue, 16 Apr 2019 20:10:47 +0100</pubDate>
+      
+      <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-setup/</guid>
+      <description>Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&amp;rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&amp;rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same.</description>
+    </item>
     
   </channel>
 </rss>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>K8S DigitalRonin </title>
+    <title>K8S DigitalRonin  | Rails on Kubernetes - part 1: Setup</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -28,18 +28,30 @@
 
     
 
-    <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://k8s.digitalronin.com/404.html" />
+    <meta property="og:title" content="Rails on Kubernetes - part 1: Setup" />
+<meta property="og:description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://k8s.digitalronin.com/posts/rails-on-k8s-setup/" />
+<meta property="article:published_time" content="2019-04-16T20:10:47&#43;01:00"/>
+<meta property="article:modified_time" content="2019-04-16T20:10:47&#43;01:00"/>
+
+<meta itemprop="name" content="Rails on Kubernetes - part 1: Setup">
+<meta itemprop="description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same.">
 
 
-<meta itemprop="name" content="404 Page not found">
-<meta itemprop="description" content="">
+<meta itemprop="datePublished" content="2019-04-16T20:10:47&#43;01:00" />
+<meta itemprop="dateModified" content="2019-04-16T20:10:47&#43;01:00" />
+<meta itemprop="wordCount" content="373">
 
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Rails on Kubernetes - part 1: Setup"/>
+<meta name="twitter:description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same."/>
 
       
 <script type="application/javascript">
@@ -59,6 +71,8 @@ if (!doNotTrack) {
   <body class="ma0 avenir bg-near-white production">
 
     
+   
+  
 
   <header>
     <div class="bg-black">
@@ -119,13 +133,126 @@ if (!doNotTrack) {
   </header>
 
 
+
     <main class="pb7" role="main">
       
-    <article class="center cf pv5 measure-wide-l">
-      <h1>
-        This is not the page you were looking for
-      </h1>
-    </article>
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Rails on Kubernetes - part 1: Setup</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-04-16T20:10:47&#43;01:00">April 16, 2019</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 373 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h1 id="rails-on-kubernetes-part-1-setup">Rails on Kubernetes - part 1: Setup</h1>
+
+<p>This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.</p>
+
+<p>In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine.
+One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same.
+So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our
+production cluster.</p>
+
+<p>The two most popular ways to run a local development kubernetes cluster are via the Docker desktop client, or to use Minikube.
+We&rsquo;ll cover both of these.</p>
+
+<h2 id="kubernetes-on-docker-desktop">Kubernetes on Docker Desktop</h2>
+
+<p>If you&rsquo;re running a recent version of the Docker desktop client. You can run a local kubernetes cluster with just a few clicks.</p>
+
+<p>Click on the Docker icon in your taskbar, and select &lsquo;Kubernetes&rsquo; from the drop-down menu, then click on &lsquo;Enable local cluster&rsquo;.</p>
+
+<p><img src="/images/start-docker-k8s.png" alt="foo" /></p>
+
+<p>You&rsquo;ll have to wait a few minutes while the Docker client downloads and installs Kubernetes.
+Then you should have a working kubernetes cluster on your machine.</p>
+
+<h2 id="minikube">Minikube</h2>
+
+<p>If you can&rsquo;t or don&rsquo;t want to use Kubernetes via the Docker client, <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Minikube</a> is another option.
+Minikube runs a kubernetes cluster in a virtual machine on your computer, so you&rsquo;ll need a
+hypervisor like VirtualBox.</p>
+
+<p>The installation instructions on the <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a> site are very clear, so rather than reproduce those here,
+I recommend visiting their site.</p>
+
+<h2 id="kubectl">kubectl</h2>
+
+<p>kubectl is the command-line tool you will use most often when interacting with a kubernetes cluster.</p>
+
+<p>You can install it on a Mac via Homebrew like this:</p>
+
+<pre><code>brew install kubernetes-cli
+</code></pre>
+
+<p>For other installation methods, please see the <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">installation instructions</a>.</p>
+
+<h2 id="confirming-your-setup">Confirming your setup</h2>
+
+<p>To confirm that everything is up and running correctly, execute this command from a terminal window:</p>
+
+<pre><code>$ kubectl cluster-info
+</code></pre>
+
+<p>You should see output something like this:</p>
+
+<pre><code>Kubernetes master is running at https://localhost:6443
+KubeDNS is running at https://localhost:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+</code></pre>
+
+<p>Now that we have our cluster up and running, we&rsquo;ll create a rails application to deploy on it in <a href="/posts/rails-on-k8s-create-app">part two</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+<div id="mc_embed_signup">
+<hr />
+<form action="https://digitalronin.us20.list-manage.com/subscribe/post?u=dd1a1121b6114b8dabc997c07&amp;id=af64f40e9d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<h2>Join my mailing list</h2>
+  <p>Add your email address here, and you'll be notified whenever I write a new article.</p>
+  <p>You can unsubscribe at any time, and I will never provide your email address to anyone else.</p>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_dd1a1121b6114b8dabc997c07_af64f40e9d" tabindex="-1" value=""></div>
+    <br />
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+
+</article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
