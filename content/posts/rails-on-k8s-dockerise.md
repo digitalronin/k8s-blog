@@ -118,7 +118,6 @@ You should see a bunch of output lines, ending with these two (your container id
     Successfully built 935b08611cd5
     Successfully tagged counter-app:1.0
 
-Now we have our docker image. In the [next section][part4] we'll see how to run it locally using docker-compose.
+Now we have our docker image. In the next section we'll see how to run it locally using docker-compose.
 
-[part4]: /posts/rails-on-k8s-docker-compose
 
