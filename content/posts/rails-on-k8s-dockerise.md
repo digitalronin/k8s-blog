@@ -103,10 +103,10 @@ USER 1000
 It's good practice for containers to run as a non-root user. Cluster administrators often set security policies which *prevent* root containers from running at all. So this section creates a non-root user, with uid 1000. appuser needs to be able to write to the tmp, log and db directories, so we grant it ownership of those, then switch from root to appuser.
 
 {{<highlight docker>}}
-CMD ["rails", "server"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
 {{</highlight>}}
 
-Finally, we run the rails server command to start up our webserver.
+Finally, we run the rails server command to start up our webserver. The `-b 0.0.0.0` tells rails to bind to all available network interfaces. Without this, we wouldn't be able to connect to our app. from outside its docker container.
 
 To build our docker image, execute this command:
 
