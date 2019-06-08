@@ -45,7 +45,7 @@ Before we do that, there is a small tweak we need to make. Rails applications re
 
 <meta itemprop="datePublished" content="2019-05-06T20:11:19&#43;01:00" />
 <meta itemprop="dateModified" content="2019-05-06T20:11:19&#43;01:00" />
-<meta itemprop="wordCount" content="645">
+<meta itemprop="wordCount" content="675">
 
 
 
@@ -153,7 +153,7 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 645 words</span>
+        <span class="f6 mv4 dib tracked"> - 675 words</span>
       
     </header>
 
@@ -250,9 +250,9 @@ our docker image.</p>
 
 <p>It&rsquo;s good practice for containers to run as a non-root user. Cluster administrators often set security policies which <em>prevent</em> root containers from running at all. So this section creates a non-root user, with uid 1000. appuser needs to be able to write to the tmp, log and db directories, so we grant it ownership of those, then switch from root to appuser.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">CMD</span><span style="color:#e6db74"> [&#34;rails&#34;, &#34;server&#34;]</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">CMD</span><span style="color:#e6db74"> [&#34;rails&#34;, &#34;server&#34;, &#34;-b&#34;, &#34;0.0.0.0&#34;]</span></code></pre></div>
 
-<p>Finally, we run the rails server command to start up our webserver.</p>
+<p>Finally, we run the rails server command to start up our webserver. The <code>-b 0.0.0.0</code> tells rails to bind to all available network interfaces. Without this, we wouldn&rsquo;t be able to connect to our app. from outside its docker container.</p>
 
 <p>To build our docker image, execute this command:</p>
 
