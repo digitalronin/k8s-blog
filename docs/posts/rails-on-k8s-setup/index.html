@@ -29,29 +29,29 @@
     
 
     <meta property="og:title" content="Rails on Kubernetes - part 1: Setup" />
-<meta property="og:description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
-In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same." />
+<meta property="og:description" content="This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same. So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our production cluster." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://k8s.digitalronin.com/posts/rails-on-k8s-setup/" />
 <meta property="article:published_time" content="2019-04-16T20:10:47&#43;01:00"/>
 <meta property="article:modified_time" content="2019-04-16T20:10:47&#43;01:00"/>
 
 <meta itemprop="name" content="Rails on Kubernetes - part 1: Setup">
-<meta itemprop="description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
-In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same.">
+<meta itemprop="description" content="This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same. So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our production cluster.">
 
 
 <meta itemprop="datePublished" content="2019-04-16T20:10:47&#43;01:00" />
 <meta itemprop="dateModified" content="2019-04-16T20:10:47&#43;01:00" />
-<meta itemprop="wordCount" content="373">
+<meta itemprop="wordCount" content="366">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rails on Kubernetes - part 1: Setup"/>
-<meta name="twitter:description" content="Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
-In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same."/>
+<meta name="twitter:description" content="This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same. So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our production cluster."/>
 
       
 <script type="application/javascript">
@@ -150,13 +150,11 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 373 words</span>
+        <span class="f6 mv4 dib tracked"> - 366 words</span>
       
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h1 id="rails-on-kubernetes-part-1-setup">Rails on Kubernetes - part 1: Setup</h1>
 
 <p>This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.</p>
 

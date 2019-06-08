@@ -6,10 +6,21 @@
     <description>Recent content in Posts on K8S DigitalRonin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2019 20:11:19 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2019 20:11:19 +0100</lastBuildDate>
     
 	<atom:link href="http://k8s.digitalronin.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rails on Kubernetes - part 4: Docker Compose</title>
+      <link>http://k8s.digitalronin.com/posts/rails-on-k8s-docker-compose/</link>
+      <pubDate>Mon, 13 May 2019 20:11:19 +0100</pubDate>
+      
+      <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-docker-compose/</guid>
+      <description>This is one of a series of blog posts in which I&amp;rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ To test our containerised Rails app locally, before we try to deploy it to our kubernetes cluster, we can use docker-compose.
+First of all, stop the postgresql container, otherwise things might get confusing:</description>
+    </item>
     
     <item>
       <title>Rails on Kubernetes - part 3: Dockerise</title>
@@ -17,9 +28,9 @@
       <pubDate>Mon, 06 May 2019 20:11:19 +0100</pubDate>
       
       <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-dockerise/</guid>
-      <description>Rails on Kubernetes - part 3: Dockerise Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
-In this section, we&amp;rsquo;re going to take our rails application and package it up as a Docker image.
-Before we do that, there is a small tweak we need to make. Rails applications require the tzinfo-data gem on some platforms, but not others. The docker image we will create needs the gem, but bundler fails to recognise the environment correctly, when installing gems in the docker image.</description>
+      <description>This is one of a series of blog posts in which I&amp;rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
+In this section, we&amp;rsquo;re going to take our rails application and package it up as a Docker image.</description>
     </item>
     
     <item>
@@ -28,10 +39,8 @@ Before we do that, there is a small tweak we need to make. Rails applications re
       <pubDate>Tue, 30 Apr 2019 20:11:07 +0100</pubDate>
       
       <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-create-app2/</guid>
-      <description>Rails on Kubernetes - part 2a: The Counter App Our rails application can connect to our database. So now let&amp;rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
-Fire up a termninal, and cd into the counter directory.
-First, let&amp;rsquo;s create a scaffold for our value.
-rails generate scaffold value amount:integer rails db:migrate  This creates a lot more than we actually need, but I&amp;rsquo;m more concerned about the kubernetes part than the rails part, in this tutorial, so I&amp;rsquo;m not going to worry about that (or about best practice for our rails code).</description>
+      <description>This is one of a series of blog posts in which I&amp;rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here
+ Our rails application can connect to our database. So now let&amp;rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.</description>
     </item>
     
     <item>
@@ -40,8 +49,8 @@ rails generate scaffold value amount:integer rails db:migrate  This creates a lo
       <pubDate>Tue, 23 Apr 2019 20:11:07 +0100</pubDate>
       
       <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-create-app/</guid>
-      <description>Rails on Kubernetes - part 2: Create the app This is the second part of a series of posts on how to deploy a ruby on rails application to a kubernetes cluster. If you want to start from the beginning, part one is here
-Now that we have our kubernetes cluster, we need to create something to deploy onto it.
+      <description>This is the second part of a series of posts on how to deploy a ruby on rails application to a kubernetes cluster. If you want to start from the beginning, part one is here
+ Now that we have our kubernetes cluster, we need to create something to deploy onto it.
 For this walkthrough, I&amp;rsquo;m going to create a trivial rails application, which just stores a counter in a database, and allows you to increment it by clicking a button.</description>
     </item>
     
@@ -51,8 +60,8 @@ For this walkthrough, I&amp;rsquo;m going to create a trivial rails application,
       <pubDate>Tue, 16 Apr 2019 20:10:47 +0100</pubDate>
       
       <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-setup/</guid>
-      <description>Rails on Kubernetes - part 1: Setup This is part one of a series of posts in which I&amp;rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
-In this post, we&amp;rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same.</description>
+      <description>This is part one of a series of posts in which I&amp;rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&amp;rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same. So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our production cluster.</description>
     </item>
     
   </channel>

@@ -29,32 +29,32 @@
     
 
     <meta property="og:title" content="Rails on Kubernetes - part 3: Dockerise" />
-<meta property="og:description" content="Rails on Kubernetes - part 3: Dockerise Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
-In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.
-Before we do that, there is a small tweak we need to make. Rails applications require the tzinfo-data gem on some platforms, but not others. The docker image we will create needs the gem, but bundler fails to recognise the environment correctly, when installing gems in the docker image." />
+<meta property="og:description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
+In this section, we&rsquo;re going to take our rails application and package it up as a Docker image." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://k8s.digitalronin.com/posts/rails-on-k8s-dockerise/" />
 <meta property="article:published_time" content="2019-05-06T20:11:19&#43;01:00"/>
 <meta property="article:modified_time" content="2019-05-06T20:11:19&#43;01:00"/>
 
 <meta itemprop="name" content="Rails on Kubernetes - part 3: Dockerise">
-<meta itemprop="description" content="Rails on Kubernetes - part 3: Dockerise Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
-In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.
-Before we do that, there is a small tweak we need to make. Rails applications require the tzinfo-data gem on some platforms, but not others. The docker image we will create needs the gem, but bundler fails to recognise the environment correctly, when installing gems in the docker image.">
+<meta itemprop="description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
+In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.">
 
 
 <meta itemprop="datePublished" content="2019-05-06T20:11:19&#43;01:00" />
 <meta itemprop="dateModified" content="2019-05-06T20:11:19&#43;01:00" />
-<meta itemprop="wordCount" content="675">
+<meta itemprop="wordCount" content="703">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rails on Kubernetes - part 3: Dockerise"/>
-<meta name="twitter:description" content="Rails on Kubernetes - part 3: Dockerise Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
-In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.
-Before we do that, there is a small tweak we need to make. Rails applications require the tzinfo-data gem on some platforms, but not others. The docker image we will create needs the gem, but bundler fails to recognise the environment correctly, when installing gems in the docker image."/>
+<meta name="twitter:description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
+In this section, we&rsquo;re going to take our rails application and package it up as a Docker image."/>
 
       
 <script type="application/javascript">
@@ -153,13 +153,13 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 675 words</span>
+        <span class="f6 mv4 dib tracked"> - 703 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h1 id="rails-on-kubernetes-part-3-dockerise">Rails on Kubernetes - part 3: Dockerise</h1>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><blockquote>
+<p>This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is <a href="/posts/rails-on-k8s-setup">here</a>, and the previous article is <a href="/posts/rails-on-k8s-create-app2">here</a>.</p>
+</blockquote>
 
 <p>Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.</p>
 
@@ -265,7 +265,7 @@ our docker image.</p>
 Successfully tagged counter-app:1.0
 </code></pre>
 
-<p>Now we have our docker image. In the next section we&rsquo;ll see how to run it locally using docker-compose.</p>
+<p>Now we have our docker image. In the <a href="/posts/rails-on-k8s-docker-compose">next</a> section we&rsquo;ll see how to run it locally using docker-compose.</p>
 <ul class="pa0">
   
 </ul>

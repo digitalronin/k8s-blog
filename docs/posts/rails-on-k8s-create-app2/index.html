@@ -29,35 +29,29 @@
     
 
     <meta property="og:title" content="Rails on Kubernetes - part 2a: The Counter App." />
-<meta property="og:description" content="Rails on Kubernetes - part 2a: The Counter App Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
-Fire up a termninal, and cd into the counter directory.
-First, let&rsquo;s create a scaffold for our value.
-rails generate scaffold value amount:integer rails db:migrate  This creates a lot more than we actually need, but I&rsquo;m more concerned about the kubernetes part than the rails part, in this tutorial, so I&rsquo;m not going to worry about that (or about best practice for our rails code)." />
+<meta property="og:description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here
+ Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://k8s.digitalronin.com/posts/rails-on-k8s-create-app2/" />
 <meta property="article:published_time" content="2019-04-30T20:11:07&#43;01:00"/>
 <meta property="article:modified_time" content="2019-04-30T20:11:07&#43;01:00"/>
 
 <meta itemprop="name" content="Rails on Kubernetes - part 2a: The Counter App.">
-<meta itemprop="description" content="Rails on Kubernetes - part 2a: The Counter App Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
-Fire up a termninal, and cd into the counter directory.
-First, let&rsquo;s create a scaffold for our value.
-rails generate scaffold value amount:integer rails db:migrate  This creates a lot more than we actually need, but I&rsquo;m more concerned about the kubernetes part than the rails part, in this tutorial, so I&rsquo;m not going to worry about that (or about best practice for our rails code).">
+<meta itemprop="description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here
+ Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.">
 
 
 <meta itemprop="datePublished" content="2019-04-30T20:11:07&#43;01:00" />
 <meta itemprop="dateModified" content="2019-04-30T20:11:07&#43;01:00" />
-<meta itemprop="wordCount" content="259">
+<meta itemprop="wordCount" content="285">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rails on Kubernetes - part 2a: The Counter App."/>
-<meta name="twitter:description" content="Rails on Kubernetes - part 2a: The Counter App Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
-Fire up a termninal, and cd into the counter directory.
-First, let&rsquo;s create a scaffold for our value.
-rails generate scaffold value amount:integer rails db:migrate  This creates a lot more than we actually need, but I&rsquo;m more concerned about the kubernetes part than the rails part, in this tutorial, so I&rsquo;m not going to worry about that (or about best practice for our rails code)."/>
+<meta name="twitter:description" content="This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here
+ Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button."/>
 
       
 <script type="application/javascript">
@@ -156,13 +150,13 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 259 words</span>
+        <span class="f6 mv4 dib tracked"> - 285 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h1 id="rails-on-kubernetes-part-2a-the-counter-app">Rails on Kubernetes - part 2a: The Counter App</h1>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><blockquote>
+<p>This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is <a href="/posts/rails-on-k8s-setup">here</a>, and the previous article is <a href="/posts/rails-on-k8s-create-app">here</a></p>
+</blockquote>
 
 <p>Our rails application can connect to our database. So now let&rsquo;s get it to do
 what we want, which is to store and display a value, and increment it whenever
