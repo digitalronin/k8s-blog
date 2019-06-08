@@ -5,9 +5,7 @@ date: 2019-04-23T20:11:07+01:00
 
 # Rails on Kubernetes - part 2: Create the app
 
-This is the second part of a series of posts on how to deploy a ruby on rails
-application to a kubernetes cluster.  If you want to start from the beginning,
-part one is [here][part1]
+> This is the second part of a series of posts on how to deploy a ruby on rails application to a kubernetes cluster.  If you want to start from the beginning, part one is [here][start]
 
 Now that we have our kubernetes cluster, we need to create something to deploy
 onto it.
@@ -139,8 +137,8 @@ This time, when you visit `http://localhost:3000` you should see the rails welco
 
 OK, so now we've got rails running on our local machine, talking to postgresql running in a container (but using a port-forward so that we can talk to it as if it were running locally).
 
-This post is already getting pretty long, so we'll add the code for our app. in the [next part][part2a]
+This post is already getting pretty long, so we'll add the code for our app. in the [next part][next]
 
-[part2a]: /posts/rails-on-k8s-create-app2
-[part1]: /posts/rails-on-k8s-setup/
+[next]: /posts/rails-on-k8s-create-app2
+[start]: /posts/rails-on-k8s-setup/
 [install-ruby]: https://www.ruby-lang.org/en/downloads/

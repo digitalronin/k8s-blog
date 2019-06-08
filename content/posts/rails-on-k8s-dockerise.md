@@ -3,7 +3,7 @@ title: "Rails on Kubernetes - part 3: Dockerise"
 date: 2019-05-06T20:11:19+01:00
 ---
 
-# Rails on Kubernetes - part 3: Dockerise
+> This is one of a series of blog posts in which I'm walking through the process of deploying a rails application to a kubernetes cluster. Part one is [here][start], and the previous article is [here][previous].
 
 Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
 
@@ -119,4 +119,6 @@ You should see a bunch of output lines, ending with these two (your container id
 
 Now we have our docker image. In the next section we'll see how to run it locally using docker-compose.
 
-
+[start]: /posts/rails-on-k8s-setup
+[previous]: /posts/rails-on-k8s-create-app2
+[next]: #

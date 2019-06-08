@@ -5,6 +5,8 @@ date: 2019-04-30T20:11:07+01:00
 
 # Rails on Kubernetes - part 2a: The Counter App
 
+> This is one of a series of blog posts in which I'm walking through the process of deploying a rails application to a kubernetes cluster. Part one is [here][start], and the previous article is [here][previous]
+
 Our rails application can connect to our database. So now let's get it to do
 what we want, which is to store and display a value, and increment it whenever
 we click a button.
@@ -60,7 +62,9 @@ That's all the work we're going to do on our rails app. It's extremely simple,
 but it's enough to prove that our rails application is interacting with our
 database, which is all we need.
 
-In the [next part][part3], we'll start to prepare the application for
+In the [next part][next], we'll start to prepare the application for
 deployment on our kubernetes cluster.
 
-[part3]: /posts/rails-on-k8s-dockerise
+[start]: /posts/rails-on-k8s-setup
+[previous]: /posts/rails-on-k8s-create-app
+[next]: /posts/rails-on-k8s-dockerise

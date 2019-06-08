@@ -59,8 +59,8 @@ You should see output something like this:
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
-Now that we have our cluster up and running, we'll create a rails application to deploy on it in [part two][part2]
+Now that we have our cluster up and running, we'll create a rails application to deploy on it in [part two][next]
 
 [minikube]: https://kubernetes.io/docs/tasks/tools/install-minikube/
 [install-kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
-[part2]: /posts/rails-on-k8s-create-app
+[next]: /posts/rails-on-k8s-create-app
