@@ -3,8 +3,6 @@ title: "Rails on Kubernetes - part 1: Setup"
 date: 2019-04-16T20:10:47+01:00
 ---
 
-# Rails on Kubernetes - part 1: Setup
-
 This is part one of a series of posts in which I'm going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
 
 In this post, we're going to use a one-node kubernetes cluster, running on your local development machine.

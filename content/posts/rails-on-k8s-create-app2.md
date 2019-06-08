@@ -3,8 +3,6 @@ title: "Rails on Kubernetes - part 2a: The Counter App."
 date: 2019-04-30T20:11:07+01:00
 ---
 
-# Rails on Kubernetes - part 2a: The Counter App
-
 > This is one of a series of blog posts in which I'm walking through the process of deploying a rails application to a kubernetes cluster. Part one is [here][start], and the previous article is [here][previous]
 
 Our rails application can connect to our database. So now let's get it to do
