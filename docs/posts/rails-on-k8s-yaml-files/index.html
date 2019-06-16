@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>K8S DigitalRonin  | Rails on Kubernetes - part 5: K8s Yaml Files</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.55.6" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Rails on Kubernetes - part 5: K8s Yaml Files" />
+<meta property="og:description" content="Rails on Kubernetes - part 5: K8s Yaml Files  This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ We&rsquo;ve got our simple rails application running via docker-compose. Now we&rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://k8s.digitalronin.com/posts/rails-on-k8s-yaml-files/" />
+<meta property="article:published_time" content="2019-05-31T20:11:39&#43;01:00"/>
+<meta property="article:modified_time" content="2019-05-31T20:11:39&#43;01:00"/>
+
+<meta itemprop="name" content="Rails on Kubernetes - part 5: K8s Yaml Files">
+<meta itemprop="description" content="Rails on Kubernetes - part 5: K8s Yaml Files  This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ We&rsquo;ve got our simple rails application running via docker-compose. Now we&rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster.">
+
+
+<meta itemprop="datePublished" content="2019-05-31T20:11:39&#43;01:00" />
+<meta itemprop="dateModified" content="2019-05-31T20:11:39&#43;01:00" />
+<meta itemprop="wordCount" content="916">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rails on Kubernetes - part 5: K8s Yaml Files"/>
+<meta name="twitter:description" content="Rails on Kubernetes - part 5: K8s Yaml Files  This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ We&rsquo;ve got our simple rails application running via docker-compose. Now we&rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster."/>
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-36560094-6', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </head>
+
+  <body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://k8s.digitalronin.com/" class="f3 fw2 hover-white no-underline white-90 dib">
+      K8S DigitalRonin
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+<a href="https://twitter.com/digitalronin" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+<a href="https://github.com/digitalronin" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Rails on Kubernetes - part 5: K8s Yaml Files</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-05-31T20:11:39&#43;01:00">May 31, 2019</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 5 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 916 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h1 id="rails-on-kubernetes-part-5-k8s-yaml-files">Rails on Kubernetes - part 5: K8s Yaml Files</h1>
+
+<blockquote>
+<p>This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is <a href="/posts/rails-on-k8s-setup">here</a>, and the previous article is <a href="/posts/rails-on-k8s-docker-compose">here</a>.</p>
+</blockquote>
+
+<p>We&rsquo;ve got our simple rails application running via docker-compose. Now we&rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster.</p>
+
+<p>This is our docker-compose.yml file:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#39;2&#39;</span>
+services:
+  db:
+    image: bitnami/postgresql:<span style="color:#ae81ff">11.3</span>.<span style="color:#ae81ff">0</span>
+    environment:
+      POSTGRESQL_USERNAME: my_user
+      POSTGRESQL_PASSWORD: password123
+      POSTGRESQL_DATABASE: counter_dev
+  migrations:
+    image: counter-app:<span style="color:#ae81ff">1.0</span>
+    restart: on-failure
+    command: [<span style="color:#e6db74">&#34;bundle&#34;</span>, <span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;rails&#34;</span>, <span style="color:#e6db74">&#34;db:migrate&#34;</span>]
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://my_user:password123@db/counter_dev
+  rails:
+    image: counter-app:<span style="color:#ae81ff">1.0</span>
+    ports:
+      - <span style="color:#e6db74">&#34;3000:3000&#34;</span>
+    depends_on:
+      - migrations
+    restart: on-failure
+    environment:
+      DATABASE_URL: postgres://my_user:password123@db/counter_dev</code></pre></div>
+
+<p>We&rsquo;re defining three &lsquo;services&rsquo;, each of which uses one docker image to carry out a task. Services refer to each other by name (e.g. the &lsquo;rails&rsquo; service uses the hostname &lsquo;db&rsquo; to talk to the db service), and we&rsquo;re using environment variables for values that need to be shared between services (e.g. the database credentials).</p>
+
+<p>Users can interact with our application because we&rsquo;re mapping port 3000 on the host to port 3000 on the rails application container.</p>
+
+<p><img src="/images/docker-compose-diagram.png" alt="docker-compose diagram" /></p>
+
+<p>Kubernetes also uses yaml files for configuration, and you can see all of the concepts in our docker-compose.yml file in the corresponding kubernetes yaml files.</p>
+
+<p>There&rsquo;s a little more boilerplate, because kubernetes gives us a lot more flexibility than docker-compose in the way applications are structured.</p>
+
+<p>You don&rsquo;t deploy individual containers to kubernetes. Instead, kubernetes has the concept of a &lsquo;pod&rsquo;. You can put multiple docker containers into a single pod, but in general it&rsquo;s better to have a single container per pod, in the same way that, in general, it&rsquo;s considered better to have a single process running in each of your docker containers.</p>
+
+<p>&lsquo;Deployments&rsquo; are collections of long-running pods. &lsquo;Jobs&rsquo; are objects which run once and then exit, so we&rsquo;ll use a job for our rails migrations.</p>
+
+<p>&lsquo;Services&rsquo; allow kubernetes objects to communicate with each other.</p>
+
+<p>In a real kubernetes deployment, we would normally use an &lsquo;ingress&rsquo; to enable access to our application from outside the cluster. But, the mini-cluster we get from the docker desktop client doesn&rsquo;t really support ingresses in the same way as a real cluster would. So instead, we&rsquo;re going to use a special service called a &lsquo;NodePort&rsquo; to expose our application so that we can interact with it.</p>
+
+<p>So, what we&rsquo;ll end up with is something like this:</p>
+
+<p><img src="/images/kubernetes-diagram.png" alt="kubernetes diagram" /></p>
+
+<p>Let&rsquo;s create our kubernetes configuration files. First of all, create a &lsquo;kubernetes&rsquo; directory in the &lsquo;counter&rsquo; project to store all the files. We can create as many files as we want in this directory. Kubernetes will just concatenate them all together when we tell it to apply them, so it&rsquo;s up to us how we want to break up our concepts into separate yaml files.</p>
+
+<p>Let&rsquo;s start with the database:</p>
+
+<p><code>kubernetes/db.yaml</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: <span style="color:#ae81ff">1</span>
+  template:
+    metadata:
+      labels:
+        app: db-deployment
+    spec:
+      containers:
+      - name: db
+        image: bitnami/postgresql:<span style="color:#ae81ff">11.3</span>.<span style="color:#ae81ff">0</span>
+        ports:
+        - containerPort: <span style="color:#ae81ff">5432</span>
+        env:
+        - name: POSTGRESQL_DATABASE
+          value: counter_dev
+        - name: POSTGRESQL_PASSWORD
+          value: password123
+        - name: POSTGRESQL_USERNAME
+          value: my_user
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: db
+spec:
+  ports:
+  - port: <span style="color:#ae81ff">5432</span>
+    name: tcp
+    targetPort: <span style="color:#ae81ff">5432</span>
+  selector:
+    app: db-deployment</code></pre></div>
+
+<p>This defines the &lsquo;deployment&rsquo;, containing our single postgresql container, and a &lsquo;service&rsquo; that lets other objects in the cluster communicate with the database. The &lsquo;app&rsquo; label &lsquo;db-deployment&rsquo; ties the service to the deployment, and the &lsquo;name: db&rsquo; for the service enables other pods in the cluster to address the database using the hostname &lsquo;db&rsquo;.</p>
+
+<p>Next, let&rsquo;s define our migration job:</p>
+
+<p><code>kubernetes/migrations.yaml</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rails-migrations
+spec:
+  backoffLimit: <span style="color:#ae81ff">4</span>
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: counter-app:<span style="color:#ae81ff">1.0</span>
+        command: [ <span style="color:#e6db74">&#34;bundle&#34;</span>, <span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;rails&#34;</span>, <span style="color:#e6db74">&#34;db:migrate&#34;</span> ]
+        env:
+          - name: DATABASE_URL
+            value: postgres://my_user:password123@db/counter_dev
+      restartPolicy: OnFailure</code></pre></div>
+
+<p>We don&rsquo;t need a service for this one, because nothing else will try to connect to it.</p>
+
+<p>Notice the &lsquo;restartPolicy: OnFailure&rsquo; and &lsquo;backoffLimit: 4&rsquo;. The migration job will probably fail, the first time it starts, because the database is unlikely to be ready at that instant. These settings will retry the job 4 times, before giving up completely.</p>
+
+<p>The config for our main rails app. is very similar to the database configuration:</p>
+
+<p><code>kubernetes/rails.yaml</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rails-deployment
+spec:
+  replicas: <span style="color:#ae81ff">1</span>
+  template:
+    metadata:
+      labels:
+        app: rails-deployment
+    spec:
+      containers:
+      - name: rails
+        image: counter-app:<span style="color:#ae81ff">1.0</span>
+        ports:
+        - containerPort: <span style="color:#ae81ff">3000</span>
+        env:
+          - name: DATABASE_URL
+            value: <span style="color:#e6db74">&#34;postgres://my_user:password123@db/counter_dev&#34;</span>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rails-service
+spec:
+  ports:
+  - port: <span style="color:#ae81ff">3000</span>
+    targetPort: <span style="color:#ae81ff">3000</span>
+  selector:
+    app: rails-deployment</code></pre></div>
+
+<p>Finally, we need our nodeport service to expose the application to web traffic.</p>
+
+<p>We have to specify a &lsquo;clusterIP&rsquo; for our NodePort service. To pick a suitable IP number, run this command:</p>
+
+<pre><code class="language-bash">kubectl get all
+</code></pre>
+
+<p>This should respond with something like this:</p>
+
+<pre><code>NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    &lt;none&gt;        443/TCP   38m
+</code></pre>
+
+<p>All we need for our NodePort is a valid cluster IP number which is not in use, so we can just add one to the clusterIP shown (which is the only one currently being used).</p>
+
+<p><code>kubernetes/web-service.yaml</code></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: NodePort
+  clusterIP: <span style="color:#ae81ff">10.96</span>.<span style="color:#ae81ff">0.2</span>
+  ports:
+  - nodePort: <span style="color:#ae81ff">30001</span>
+    port: <span style="color:#ae81ff">3000</span>
+    protocol: TCP
+  selector:
+    app: rails-deployment</code></pre></div>
+
+<p>The &lsquo;nodePort&rsquo; value must be greater than 30000. If you try to specify anything below that, you&rsquo;ll get a helpful error message.</p>
+
+<p>That&rsquo;s it for our configs. In the next section, we&rsquo;ll deploy the application to our kubernetes cluster.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+<div id="mc_embed_signup">
+<hr />
+<form action="https://digitalronin.us20.list-manage.com/subscribe/post?u=dd1a1121b6114b8dabc997c07&amp;id=af64f40e9d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<h2>Join my mailing list</h2>
+  <p>Add your email address here, and you'll be notified whenever I write a new article.</p>
+  <p>You can unsubscribe at any time, and I will never provide your email address to anyone else.</p>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_dd1a1121b6114b8dabc997c07_af64f40e9d" tabindex="-1" value=""></div>
+    <br />
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+
+</article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://k8s.digitalronin.com/" >
+    &copy; 2019 K8S DigitalRonin
+  </a>
+    <div>
+
+
+
+<a href="https://twitter.com/digitalronin" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+<a href="https://github.com/digitalronin" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

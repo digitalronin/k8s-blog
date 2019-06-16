@@ -6,10 +6,20 @@
     <description>Recent content on K8S DigitalRonin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 May 2019 20:11:19 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 31 May 2019 20:11:39 +0100</lastBuildDate>
     
 	<atom:link href="http://k8s.digitalronin.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rails on Kubernetes - part 5: K8s Yaml Files</title>
+      <link>http://k8s.digitalronin.com/posts/rails-on-k8s-yaml-files/</link>
+      <pubDate>Fri, 31 May 2019 20:11:39 +0100</pubDate>
+      
+      <guid>http://k8s.digitalronin.com/posts/rails-on-k8s-yaml-files/</guid>
+      <description>Rails on Kubernetes - part 5: K8s Yaml Files  This is one of a series of blog posts in which I&amp;rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
+ We&amp;rsquo;ve got our simple rails application running via docker-compose. Now we&amp;rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster.</description>
+    </item>
     
     <item>
       <title>Rails on Kubernetes - part 4: Docker Compose</title>

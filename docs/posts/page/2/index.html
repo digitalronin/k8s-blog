@@ -141,80 +141,13 @@ if (!doNotTrack) {
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/posts/rails-on-k8s-yaml-files/" class="link black dim">
-        Rails on Kubernetes - part 5: K8s Yaml Files
+      <a href="/posts/rails-on-k8s-setup/" class="link black dim">
+        Rails on Kubernetes - part 1: Setup
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Rails on Kubernetes - part 5: K8s Yaml Files  This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
- We&rsquo;ve got our simple rails application running via docker-compose. Now we&rsquo;re going to set up the configuration files we need to deploy it to our kubernetes cluster.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/rails-on-k8s-docker-compose/" class="link black dim">
-        Rails on Kubernetes - part 4: Docker Compose
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
- To test our containerised Rails app locally, before we try to deploy it to our kubernetes cluster, we can use docker-compose.
-First of all, stop the postgresql container, otherwise things might get confusing:
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/rails-on-k8s-dockerise/" class="link black dim">
-        Rails on Kubernetes - part 3: Dockerise
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here.
- Kubernetes runs containers, so before we can deploy our application to kubernetes, we need to containerise it.
-In this section, we&rsquo;re going to take our rails application and package it up as a Docker image.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/rails-on-k8s-create-app2/" class="link black dim">
-        Rails on Kubernetes - part 2a: The Counter App.
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is one of a series of blog posts in which I&rsquo;m walking through the process of deploying a rails application to a kubernetes cluster. Part one is here, and the previous article is here
- Our rails application can connect to our database. So now let&rsquo;s get it to do what we want, which is to store and display a value, and increment it whenever we click a button.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/rails-on-k8s-create-app/" class="link black dim">
-        Rails on Kubernetes - part 2: Create the app
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is the second part of a series of posts on how to deploy a ruby on rails application to a kubernetes cluster. If you want to start from the beginning, part one is here
- Now that we have our kubernetes cluster, we need to create something to deploy onto it.
-For this walkthrough, I&rsquo;m going to create a trivial rails application, which just stores a counter in a database, and allows you to increment it by clicking a button.
+      This is part one of a series of posts in which I&rsquo;m going to walk through the process of deploying a Ruby on Rails application to Kubernetes.
+In this post, we&rsquo;re going to use a one-node kubernetes cluster, running on your local development machine. One of the great things about kubernetes is that, from the point of view of your code, all clusters are the same. So, if we write code to deploy our application on a local development cluster, that same code should work just fine when we deploy it to our production cluster.
     </div>
   </div>
 </div>
@@ -228,8 +161,8 @@ For this walkthrough, I&rsquo;m going to create a trivial rails application, whi
         <a href="/posts/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
     </li>
     
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    <li class="page-item">
+    <a href="/posts/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
     
     
@@ -242,7 +175,7 @@ For this walkthrough, I&rsquo;m going to create a trivial rails application, whi
         
     
     
-    <li class="page-item active"><a class="page-link" href="/posts/">1</a></li>
+    <li class="page-item"><a class="page-link" href="/posts/">1</a></li>
     
     
     
@@ -253,11 +186,11 @@ For this walkthrough, I&rsquo;m going to create a trivial rails application, whi
         
     
     
-    <li class="page-item"><a class="page-link" href="/posts/page/2/">2</a></li>
+    <li class="page-item active"><a class="page-link" href="/posts/page/2/">2</a></li>
     
     
-    <li class="page-item">
-    <a href="/posts/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    <li class="page-item disabled">
+    <a href="" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
     <li class="page-item">
